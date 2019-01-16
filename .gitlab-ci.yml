@@ -15,5 +15,5 @@ deploy:
   stage: deploy
   script:
     - mvn package
-    - dpl --provider=heroku --app=rrr2417-simplewebapp --api-key=c51f0525-0585-44fd-a9d3-718112a7ba64
+    - dpl --provider=heroku --app=rrr2417-simplewebapp --api-key=89a5744d-e5a0-4d44-8572-85f61cfcdb17
 
