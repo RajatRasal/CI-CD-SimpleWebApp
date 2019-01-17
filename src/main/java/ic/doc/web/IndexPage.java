@@ -22,6 +22,7 @@ public class IndexPage implements Page {
                         "<form>" +
                         "<input type=\"text\" name=\"q\" />" +
                         "<br><br><input type=\"submit\">" +
+                        "<br><br><input type=\"checkbox\"> Download as markup?" +
                         "</form>" +
                         "</p>");
 
