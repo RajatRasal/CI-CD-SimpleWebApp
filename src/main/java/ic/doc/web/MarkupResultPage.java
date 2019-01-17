@@ -22,13 +22,16 @@ public class MarkupResultPage {
 
     BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
+    writer.write("# Your query result:\n\n");
+    writer.write("(submitted query: **" + query + "**)\n");
+
     // Content
     if (answer == null || answer.isEmpty()) {
-      writer.write("# Sorry\n");
       writer.write("Sorry, we didn't understand *" + query + "*.\n");
     } else {
-      writer.write("#" + query + "\n");
-      writer.write(answer);
+      for (String line : answer.split("\n")) {
+        writer.write("> " + line + "\n");
+      }
     }
 
     writer.close();
