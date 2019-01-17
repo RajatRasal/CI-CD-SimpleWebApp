@@ -31,7 +31,7 @@ public class WebServer {
             String download = req.getParameter("download");
             if (query == null) {
                 new IndexPage().writeTo(resp);
-            } else if (download.equals("on")) {
+            } else if (download != null && download.equals("on")) {
                 new MarkupResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             } else {
                 new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
