@@ -15,7 +15,6 @@ deploy:
   stage: deploy
   script:
     - mvn package
-    - export PORT=5000
-    - sh target/bin/simplewebapp &
+    - dpl --provider=heroku --app=rrr2417-simplewebapp --api-key=89a5744d-e5a0-4d44-8572-85f61cfcdb17
   only:
     - master
