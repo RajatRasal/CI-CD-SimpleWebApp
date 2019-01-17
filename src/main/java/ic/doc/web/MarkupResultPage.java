@@ -24,10 +24,10 @@ public class MarkupResultPage {
 
     // Content
     if (answer == null || answer.isEmpty()) {
-      writer.write("# Sorry</h1>");
-      writer.write("Sorry, we didn't understand *" + query + "*.");
+      writer.write("# Sorry\n");
+      writer.write("Sorry, we didn't understand *" + query + "*.\n");
     } else {
-      writer.write("#" + query);
+      writer.write("#" + query + "\n");
       writer.write(answer);
     }
 
