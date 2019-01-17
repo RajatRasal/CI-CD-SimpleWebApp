@@ -2,6 +2,7 @@ package ic.doc;
 
 import ic.doc.web.HTMLResultPage;
 import ic.doc.web.IndexPage;
+import ic.doc.web.MarkupResultPage;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -27,8 +28,11 @@ public class WebServer {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             String query = req.getParameter("q");
+            String download = req.getParameter("download");
             if (query == null) {
                 new IndexPage().writeTo(resp);
+            } else if (download.equals("on")) {
+                new MarkupResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             } else {
                 new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             }
