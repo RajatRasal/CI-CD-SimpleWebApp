@@ -3,6 +3,7 @@ package ic.doc;
 import ic.doc.web.HTMLResultPage;
 import ic.doc.web.IndexPage;
 import ic.doc.web.MarkupResultPage;
+import ic.doc.web.PdfResultPage;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -28,11 +29,19 @@ public class WebServer {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             String query = req.getParameter("q");
-            String download = req.getParameter("download");
+            String markdown = req.getParameter("markdown");
+            String pdf = req.getParameter("pdf");
+            System.out.printf("query: %s, md: %s, pdf: %s", query, markdown, pdf);
             if (query == null) {
                 new IndexPage().writeTo(resp);
-            } else if (download != null && download.equals("on")) {
+            } else if (markdown != null && markdown.equals("on")) {
                 new MarkupResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
+            } else if (pdf != null && pdf.equals("on")) {
+                try {
+                    new PdfResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             } else {
                 new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             }

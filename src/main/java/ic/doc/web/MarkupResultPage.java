@@ -14,10 +14,10 @@ public class MarkupResultPage {
   }
 
   public void writeTo(HttpServletResponse resp) throws IOException {
-
+    System.out.println("MARKDOWN -----------------------------------------");
     File tempFile = File.createTempFile("prefix-", "-suffix");
 
-    resp.setContentType("text/plain");
+    resp.setContentType("text/markdown");
     resp.setHeader("Content-Disposition", "attachment; filename=result.md");
 
     BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -37,7 +37,6 @@ public class MarkupResultPage {
     writer.close();
 
     FileInputStream fileInputStream = new FileInputStream(tempFile);
-
     OutputStream outputStream = resp.getOutputStream();
     fileInputStream.transferTo(outputStream);
   }
