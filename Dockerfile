@@ -1,4 +1,4 @@
-FROM openjdk:latest 
+FROM openjdk:latest
 MAINTAINER Imperial DevOps Project <rrr2417@ic.ac.uk>
 
 RUN apt-get update && apt-get install -y -q \
