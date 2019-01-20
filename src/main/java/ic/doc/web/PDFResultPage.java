@@ -11,14 +11,10 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import javax.servlet.http.HttpServletResponse;
 
-public class PDFResultPage implements Page {
-
-  private final String query;
-  private final String answer;
+public class PDFResultPage extends MDResultTemplate implements Page {
 
   public PDFResultPage(String query, String answer) {
-    this.query = query;
-    this.answer = answer;
+    super(query, answer);
   }
 
   public void writeTo(HttpServletResponse resp) throws IOException {
@@ -27,19 +23,7 @@ public class PDFResultPage implements Page {
 
     resp.setContentType("application/pdf");
 
-    PrintWriter writer = new PrintWriter(mdFile);
-
-    writer.write("# Your query result:\n\n");
-    writer.write("(submitted query: **" + query + "**)\n");
-    if (answer == null || answer.isEmpty()) {
-      writer.write("Sorry, we didn't understand *" + query + "*.\n");
-    } else {
-      for (String line : answer.split("\n")) {
-        writer.write("> " + line + "\n");
-      }
-    }
-
-    writer.close();
+    writeMDTemplateToFile(mdFile);
 
     String mdName = mdFile.getPath();
     String pdfName = pdfFile.getPath();

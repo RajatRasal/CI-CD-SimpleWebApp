@@ -37,11 +37,7 @@ public class WebServer {
             } else if (markdown != null && markdown.equals("on")) {
                 new MDResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             } else if (pdf != null && pdf.equals("on")) {
-                try {
-                    new PDFResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                new PDFResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             } else {
                 new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             }
