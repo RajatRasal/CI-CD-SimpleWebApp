@@ -4,6 +4,7 @@ import ic.doc.web.HTMLResultPage;
 import ic.doc.web.IndexPage;
 import ic.doc.web.MDResultPage;
 import ic.doc.web.PDFResultPage;
+import ic.doc.web.Page;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -15,37 +16,41 @@ import java.io.IOException;
 
 public class WebServer {
 
-    public WebServer() throws Exception {
-        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+  public WebServer() throws Exception {
+     Server server = new Server(Integer.valueOf(System.getenv("PORT")));
 
-        ServletHandler handler = new ServletHandler();
-        handler.addServletWithMapping(new ServletHolder(new Website()), "/*");
-        server.setHandler(handler);
+     ServletHandler handler = new ServletHandler();
+     handler.addServletWithMapping(new ServletHolder(new Website()), "/*");
+     server.setHandler(handler);
 
-        server.start();
-    }
+     server.start();
+  }
 
-    static class Website extends HttpServlet {
-        @Override
-        protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            String query = req.getParameter("q");
-            String markdown = req.getParameter("markdown");
-            String pdf = req.getParameter("pdf");
-            System.out.printf("query: %s, md: %s, pdf: %s", query, markdown, pdf);
-            if (query == null) {
-                new IndexPage().writeTo(resp);
-            } else if (markdown != null && markdown.equals("on")) {
-                new MDResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
-            } else if (pdf != null && pdf.equals("on")) {
-                new PDFResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
-            } else {
-                new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
-            }
+  static class Website extends HttpServlet {
+     @Override
+     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String query = req.getParameter("query");
+        String md = req.getParameter("md");
+        String pdf = req.getParameter("pdf");
+
+        Page page;
+
+        if (query == null) {
+          page = new IndexPage();
+        } else if (md != null) {
+          page = new MDResultPage(query, new QueryProcessor().process(query));
+        } else if (pdf != null) {
+          page = new PDFResultPage(query, new QueryProcessor().process(query));
+        } else {
+          page = new HTMLResultPage(query, new QueryProcessor().process(query));
         }
-    }
 
-    public static void main(String[] args) throws Exception {
-        new WebServer();
-    }
+        page.writeTo(resp);
+     }
+  }
+
+  public static void main(String[] args) throws Exception {
+     new WebServer();
+  }
 }
 
