@@ -1,17 +1,12 @@
 package ic.doc.web;
 
-import java.io.PrintWriter;
 import java.lang.ProcessBuilder;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import javax.servlet.http.HttpServletResponse;
 
-public class PDFResultPage extends MDResultTemplate implements Page {
+public class PDFResultPage extends MDResultPageTemplate {
 
   public PDFResultPage(String query, String answer) {
     super(query, answer);

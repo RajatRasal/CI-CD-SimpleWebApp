@@ -4,7 +4,7 @@ import java.nio.file.Files;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-public class MDResultPage extends MDResultTemplate implements Page {
+public class MDResultPage extends MDResultPageTemplate {
 
   public MDResultPage(String query, String answer) {
     super(query, answer);

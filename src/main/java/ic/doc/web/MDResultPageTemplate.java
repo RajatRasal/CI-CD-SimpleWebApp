@@ -4,12 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public abstract class MDResultTemplate {
+abstract class MDResultPageTemplate implements Page {
 
   private final String query;
   private final String answer;
 
-  protected MDResultTemplate(String query, String answer) {
+  protected MDResultPageTemplate(String query, String answer) {
     this.query = query;
     this.answer = answer;
   }
