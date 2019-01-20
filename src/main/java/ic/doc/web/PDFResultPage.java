@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import javax.servlet.http.HttpServletResponse;
 
-public class PDFResultPage {
+public class PDFResultPage implements Page {
 
   private final String query;
   private final String answer;
@@ -21,7 +21,7 @@ public class PDFResultPage {
     this.answer = answer;
   }
 
-  public void writeTo(HttpServletResponse resp) throws IOException, InterruptedException {
+  public void writeTo(HttpServletResponse resp) throws IOException {
     File mdFile = File.createTempFile("result", ".md");
     File pdfFile = File.createTempFile("result", ".pdf");
 
@@ -45,7 +45,11 @@ public class PDFResultPage {
     String pdfName = pdfFile.getPath();
 
     ProcessBuilder pb = new ProcessBuilder("pandoc", mdName, "-f", "markdown", "-o", pdfName);
-    pb.start().waitFor();
+    try {
+      pb.start().waitFor();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
 
     Files.copy(pdfFile.toPath(), resp.getOutputStream());
     mdFile.delete();

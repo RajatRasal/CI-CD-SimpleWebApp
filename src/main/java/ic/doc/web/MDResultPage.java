@@ -3,7 +3,7 @@ package ic.doc.web;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-public class MDResultPage {
+public class MDResultPage implements Page {
 
   private final String query;
   private final String answer;
