@@ -3,12 +3,12 @@ package ic.doc.web;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-public class MarkupResultPage {
+public class MDResultPage {
 
   private final String query;
   private final String answer;
 
-  public MarkupResultPage(String query, String answer) {
+  public MDResultPage(String query, String answer) {
     this.query = query;
     this.answer = answer;
   }

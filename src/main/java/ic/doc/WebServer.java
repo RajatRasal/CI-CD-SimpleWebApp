@@ -2,8 +2,8 @@ package ic.doc;
 
 import ic.doc.web.HTMLResultPage;
 import ic.doc.web.IndexPage;
-import ic.doc.web.MarkupResultPage;
-import ic.doc.web.PdfResultPage;
+import ic.doc.web.MDResultPage;
+import ic.doc.web.PDFResultPage;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -35,10 +35,10 @@ public class WebServer {
             if (query == null) {
                 new IndexPage().writeTo(resp);
             } else if (markdown != null && markdown.equals("on")) {
-                new MarkupResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
+                new MDResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             } else if (pdf != null && pdf.equals("on")) {
                 try {
-                    new PdfResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
+                    new PDFResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
