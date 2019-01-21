@@ -24,7 +24,7 @@ public class PDFResultPage extends MDResultPageTemplate {
 
     String mdName = mdFile.getPath();
     String pdfName = pdfFile.getPath();
-    
+
     ProcessBuilder pb = new ProcessBuilder("pandoc", mdName, "-f", "markdown", "-o", pdfName);
     try {
       pb.start().waitFor();

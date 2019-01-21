@@ -1,6 +1,5 @@
 package ic.doc;
 
-import ic.doc.web.MDResultPage;
 import ic.doc.web.PDFResultPage;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
@@ -12,9 +11,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.WriteListener;
 import javax.servlet.http.*;
 import java.io.*;
-import java.net.SocketOption;
 
-import static org.junit.Assert.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class PDFResultPageTest {
     @Rule
@@ -42,9 +40,6 @@ public class PDFResultPageTest {
             public void write(int b) throws IOException {
                 out.write(b);
                 out.flush();
-                //out.flush();
-                //out.flush();System.out.println("flushed");
-
             }
 
             @Override
@@ -81,5 +76,16 @@ public class PDFResultPageTest {
         }});
 
         resultPage.writeTo(respMock);
+    }
+
+    @Test
+    public void dataIsWrittenToOutputStream() throws IOException {
+        context.checking(new Expectations() {{
+            allowing(respMock).getOutputStream(); will(returnValue(so));
+            allowing(respMock);
+        }});
+
+        resultPage.writeTo(respMock);
+        assertTrue(reader.ready());
     }
 }
