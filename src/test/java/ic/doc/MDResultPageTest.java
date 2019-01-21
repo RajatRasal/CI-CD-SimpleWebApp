@@ -18,14 +18,12 @@ import static org.hamcrest.CoreMatchers.containsString;
 public class MDResultPageTest {
     @Rule
     public JUnitRuleMockery context = new JUnitRuleMockery();
-    MDResultPage resultPage = new MDResultPage("query", "answer");
-    HttpServletResponse respMock = context.mock(HttpServletResponse.class);
+    private final MDResultPage resultPage = new MDResultPage("query", "answer");
+    private final HttpServletResponse respMock = context.mock(HttpServletResponse.class);
 
-    ServletOutputStream so;
-    BufferedReader reader;
-    OutputStream out;
-
-    Writer writer;
+    private ServletOutputStream so;
+    private BufferedReader reader;
+    private OutputStream out;
 
     @Before
     public void setUp() throws IOException {
@@ -51,20 +49,6 @@ public class MDResultPageTest {
             @Override
             public void setWriteListener(WriteListener writeListener) {
             }
-        };
-
-        writer = new Writer() {
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                out.write(new String(cbuf).getBytes(), off, len);
-                out.flush();
-            }
-
-            @Override
-            public void flush() throws IOException { out.flush(); }
-
-            @Override
-            public void close() throws IOException { out.close(); }
         };
     }
 
