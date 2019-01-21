@@ -20,8 +20,10 @@ public class IndexPage implements Page {
                 "<h1>Welcome!!</h1>" +
                         "<p>Enter your query in the box below: " +
                         "<form>" +
-                        "<input type=\"text\" name=\"q\" />" +
+                        "<input type=\"text\" name=\"query\" />" +
                         "<br><br><input type=\"submit\">" +
+                        "<br><br><input type=\"checkbox\" name=\"format\" value=\"md\"> Download as markdown?" +
+                        "<br><br><input type=\"checkbox\" name=\"format\" value=\"pdf\"> Download as pdf?" +
                         "</form>" +
                         "</p>");
 
