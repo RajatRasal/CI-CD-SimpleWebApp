@@ -28,7 +28,8 @@ public class PDFResultPageTest {
 
     @Before
     public void setUp() throws IOException {
-        PipedInputStream pipeInput = new PipedInputStream(2000000);
+        // Pipe size must be large enough to fit the file.
+        PipedInputStream pipeInput = new PipedInputStream(131072);
         reader = new BufferedReader(
                 new InputStreamReader(pipeInput));
         out = new BufferedOutputStream(

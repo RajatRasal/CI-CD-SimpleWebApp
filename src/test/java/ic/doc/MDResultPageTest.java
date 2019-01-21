@@ -1,7 +1,6 @@
 package ic.doc;
 
 import ic.doc.web.MDResultPage;
-import ic.doc.web.PDFResultPage;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Before;
@@ -30,7 +29,7 @@ public class MDResultPageTest {
 
     @Before
     public void setUp() throws IOException {
-        PipedInputStream pipeInput = new PipedInputStream(2000000);
+        PipedInputStream pipeInput = new PipedInputStream();
         reader = new BufferedReader(
                 new InputStreamReader(pipeInput));
         out = new BufferedOutputStream(
