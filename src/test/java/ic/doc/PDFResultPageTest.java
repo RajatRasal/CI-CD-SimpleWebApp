@@ -26,7 +26,7 @@ public class PDFResultPageTest {
     private ServletOutputStream so;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         so = new ServletOutputStream() {
             @Override
             public void write(int b) { }
@@ -37,8 +37,7 @@ public class PDFResultPageTest {
             }
 
             @Override
-            public void setWriteListener(WriteListener writeListener) {
-            }
+            public void setWriteListener(WriteListener writeListener) { }
         };
     }
 
