@@ -17,34 +17,19 @@ import java.util.concurrent.CountDownLatch;
 import static junit.framework.TestCase.assertTrue;
 
 public class PDFResultPageTest {
-    Synchroniser synchroniser = new Synchroniser();
-
     @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery() {{
-        setThreadingPolicy(synchroniser);
-    }};
+    public JUnitRuleMockery context = new JUnitRuleMockery();
 
-    PDFResultPage resultPage = new PDFResultPage("query", "answer");
-    HttpServletResponse respMock = context.mock(HttpServletResponse.class);
+    private final PDFResultPage resultPage = new PDFResultPage("query", "answer");
+    private final HttpServletResponse respMock = context.mock(HttpServletResponse.class);
 
-    ServletOutputStream so;
-    BufferedReader reader;
-    OutputStream out;
-
-    private CountDownLatch lock;
-
-    Writer writer;
+    private ServletOutputStream so;
 
     @Before
     public void setUp() throws IOException {
-        lock = new CountDownLatch(1);
-
-        int i = 0;
         so = new ServletOutputStream() {
             @Override
-            public void write(int b) throws IOException {
-                lock.countDown();
-            }
+            public void write(int b) { }
 
             @Override
             public boolean isReady() {
@@ -54,20 +39,6 @@ public class PDFResultPageTest {
             @Override
             public void setWriteListener(WriteListener writeListener) {
             }
-        };
-
-        writer = new Writer() {
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                out.write(new String(cbuf).getBytes(), off, len);
-                out.flush();
-            }
-
-            @Override
-            public void flush() throws IOException { out.flush(); }
-
-            @Override
-            public void close() throws IOException { out.close(); }
         };
     }
 
