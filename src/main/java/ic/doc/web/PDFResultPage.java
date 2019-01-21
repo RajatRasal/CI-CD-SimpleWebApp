@@ -1,5 +1,7 @@
 package ic.doc.web;
 
+import java.io.FileInputStream;
+import java.io.OutputStream;
 import java.lang.ProcessBuilder;
 import java.io.File;
 import java.io.IOException;
@@ -22,15 +24,17 @@ public class PDFResultPage extends MDResultPageTemplate {
 
     String mdName = mdFile.getPath();
     String pdfName = pdfFile.getPath();
-
+    
     ProcessBuilder pb = new ProcessBuilder("pandoc", mdName, "-f", "markdown", "-o", pdfName);
     try {
       pb.start().waitFor();
     } catch (InterruptedException e) {
       e.printStackTrace();
+      throw new IOException();
     }
 
     Files.copy(pdfFile.toPath(), resp.getOutputStream());
+
     mdFile.delete();
     pdfFile.delete();
   }
