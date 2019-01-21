@@ -33,6 +33,7 @@ public class PDFResultPage extends MDResultPageTemplate {
       throw new IOException();
     }
 
+    System.out.println("writing");
     Files.copy(pdfFile.toPath(), resp.getOutputStream());
 
     mdFile.delete();
