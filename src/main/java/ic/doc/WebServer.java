@@ -30,19 +30,17 @@ public class WebServer {
      @Override
      protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String query = req.getParameter("query");
-        String md = req.getParameter("md");
-        String pdf = req.getParameter("pdf");
-
+        String format = req.getParameter("format");
         Page page;
 
         if (query == null) {
           page = new IndexPage();
-        } else if (md != null) {
-          page = new MDResultPage(query, new QueryProcessor().process(query));
-        } else if (pdf != null) {
+        } else if (format == null) {
+          page = new HTMLResultPage(query, new QueryProcessor().process(query));
+        } else if (format.equals("pdf")) {
           page = new PDFResultPage(query, new QueryProcessor().process(query));
         } else {
-          page = new HTMLResultPage(query, new QueryProcessor().process(query));
+          page = new MDResultPage(query, new QueryProcessor().process(query));
         }
 
         page.writeTo(resp);
