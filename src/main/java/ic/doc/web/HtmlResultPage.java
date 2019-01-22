@@ -13,7 +13,7 @@ public class HtmlResultPage implements Page {
     this.query = query;
     this.answer = answer;
   }
-  
+
   /**
    * Writes a HTML formatted result page to the given HttpServletResponse
    * writer. Uses the query and answer given on construction.

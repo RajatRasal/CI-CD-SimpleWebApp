@@ -1,7 +1,12 @@
 stages:
+  - lint
   - compile
   - test
   - deploy
+
+lint:
+  stage: lint
+  script: mvn checkstyle:check -Dcheckstyle.config.location=google_checks.xml -Dcheckstyle.violationSeverity=warning
 
 compile:
   stage: compile
