@@ -17,6 +17,15 @@ public class QueryProcessor {
                            "his works of hard science fiction and popular science. \n");
             results.append(System.lineSeparator());
         }
+
+        if (query.toLowerCase().contains("socrates")) {
+            results.append("Socrates (/ˈsɒkrətiːz/ Ancient Greek: Σωκρᾰ́της, translit. Sōkrátēs, [sɔːkrátɛːs];\n" +
+                "c. 470 – 399 BC) was a classical Greek (Athenian) philosopher \n" +
+                "credited as one of the founders of Western philosophy, and as being the first \n" +
+                "moral philosopher of the Western ethical tradition of thought.");
+            results.append(System.lineSeparator());
+        }
+
         return results.toString();
     }
 }
