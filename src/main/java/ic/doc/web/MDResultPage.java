@@ -1,8 +1,8 @@
 package ic.doc.web;
 
+import java.io.*;
 import java.nio.file.Files;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 
 public class MDResultPage extends MDResultPageTemplate {
 

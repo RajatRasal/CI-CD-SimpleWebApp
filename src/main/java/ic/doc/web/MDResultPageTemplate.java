@@ -30,5 +30,4 @@ abstract class MDResultPageTemplate implements Page {
 
     writer.close();
   }
-
 }
