@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  simplewebapp:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: rajatr/simplewebapp
+
+    ports:
+      - "8080:5000"
