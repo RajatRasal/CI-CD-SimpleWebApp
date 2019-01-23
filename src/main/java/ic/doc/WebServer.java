@@ -35,7 +35,7 @@ public class WebServer {
 
         if (query == null) {
           page = new IndexPage();
-        } else if (format == null) {
+        } else if (format.equals("html")) {
           page = new HTMLResultPage(query, new QueryProcessor().process(query));
         } else if (format.equals("pdf")) {
           page = new PDFResultPage(query, new QueryProcessor().process(query));
