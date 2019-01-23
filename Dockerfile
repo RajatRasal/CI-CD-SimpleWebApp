@@ -1,7 +1,7 @@
 FROM openjdk:latest
 MAINTAINER Imperial DevOps Project - 2nd Year Computing <rrr2417@ic.ac.uk>
 
-RUN apt-get update && apt-get install -y -q \
+RUN apt-get update && apt-get install -y -q --allow-unauthenticated \
     maven \
     pandoc \
     texlive-base \
