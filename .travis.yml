@@ -1,0 +1,11 @@
+language: java
+
+script:
+  - "mvn compile"
+  - "mvn test"
+  - "mvn package"
+
+deploy:
+  provider: heroku
+  api_key: 89a5744d-e5a0-4d44-8572-85f61cfcdb17
+  app: rrr2417-simplewebapp
