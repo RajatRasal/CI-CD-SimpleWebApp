@@ -18,22 +18,20 @@ public class QueryProcessor {
       results.append(System.lineSeparator());
     }
 
-        if (query.toLowerCase().contains("asimov")) {
-            results.append("Isaac Asimov (2 January 1920 - 6 April 1992) was an\n" +
-                           "American writer and professor of Biochemistry, famous for\n" +
-                           "his works of hard science fiction and popular science. \n");
-            results.append(System.lineSeparator());
-        }
-
-        if (query.toLowerCase().contains("socrates")) {
-            results.append("Socrates (470 – 399 BC) was a classical Greek (Athenian) philosopher \n" +
-                "credited as one of the founders of Western philosophy, and as being the first \n" +
-                "moral philosopher of the Western ethical tradition of thought.");
-            results.append(System.lineSeparator());
-        }
-
-        return results.toString();
+    if (query.toLowerCase().contains("asimov")) {
+      results.append("Isaac Asimov (2 January 1920 - 6 April 1992) was an\n" +
+          "American writer and professor of Biochemistry, famous for\n" +
+          "his works of hard science fiction and popular science. \n");
+      results.append(System.lineSeparator());
     }
+
+    if (query.toLowerCase().contains("socrates")) {
+      results.append("Socrates (470 – 399 BC) was a classical Greek (Athenian) philosopher \n" +
+          "credited as one of the founders of Western philosophy, and as being the first \n" +
+          "moral philosopher of the Western ethical tradition of thought.");
+      results.append(System.lineSeparator());
+    }
+
     return results.toString();
   }
 }
