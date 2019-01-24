@@ -1,6 +1,14 @@
 language: java
 jdk: oraclejdk9
 
+before_install:
+  - |
+    sudo apt-get install -y -q --allow-unauthenticated \
+      pandoc \
+      texlive-base \
+      texlive-latex-base \
+      texlive-fonts-recommended
+
 stages:
   - compile
   - test
