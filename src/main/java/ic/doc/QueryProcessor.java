@@ -1,7 +1,13 @@
 package ic.doc;
 
 public class QueryProcessor {
-
+  
+  /**
+   * Takes a query and returns the result of this query in the database of known information.
+   *
+   * @param query   the query to be run against the database
+   * @return        result of query (or an empty string if no result is present)
+   */
   public String process(String query) {
     StringBuilder results = new StringBuilder();
     if (query.toLowerCase().contains("shakespeare")) {

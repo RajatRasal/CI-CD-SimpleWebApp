@@ -1,6 +1,6 @@
 package ic.doc;
 
-import ic.doc.web.HTMLResultPage;
+import ic.doc.web.HtmlResultPage;
 import ic.doc.web.IndexPage;
 import ic.doc.web.MDResultPage;
 import ic.doc.web.PDFResultPage;
@@ -35,7 +35,7 @@ public class WebServer {
       if (query == null) {
         page = new IndexPage();
       } else if (format == null) {
-        page = new HTMLResultPage(query, new QueryProcessor().process(query));
+        page = new HtmlResultPage(query, new QueryProcessor().process(query));
       } else if (format.equals("pdf")) {
         page = new PDFResultPage(query, new QueryProcessor().process(query));
       } else {
