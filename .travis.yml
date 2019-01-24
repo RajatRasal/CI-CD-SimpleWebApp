@@ -1,11 +1,20 @@
 language: java
 
-script:
-  - "mvn compile"
-  - "mvn test"
-  - "mvn package"
+stages:
+  - compile
+  - test
+  - name: deploy
+    if: branch = master
 
-deploy:
-  provider: heroku
-  api_key: 89a5744d-e5a0-4d44-8572-85f61cfcdb17
-  app: rrr2417-simplewebapp
+jobs:
+  include:
+    - stage: compile
+      script: mvn compile
+    - stage: test
+      script: mvn test
+    - stage: deploy
+      script: mvn package
+      deploy: &heroku
+        provider: heroku
+        app: rrr2417-simplewebapp
+        api_key: 89a5744d-e5a0-4d44-8572-85f61cfcdb17
