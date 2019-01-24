@@ -1,7 +1,6 @@
 package ic.doc;
 
-import ic.doc.web.IndexPage;
-import ic.doc.web.Page;
+import ic.doc.web.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -38,11 +37,11 @@ public class WebServer {
       if (query == null) {
         page = new IndexPage();
       } else if (format.equals("html")) {
-        page = new HTMLResultPage(query, new QueryProcessor().process(query));
+        page = new HtmlResultPage(query, new QueryProcessor().process(query));
       } else if (format.equals("pdf")) {
-        page = new PDFResultPage(query, new QueryProcessor().process(query));
+        page = new PdfResultPage(query, new QueryProcessor().process(query));
       } else {
-        page = new MDResultPage(query, new QueryProcessor().process(query));
+        page = new MdResultPage(query, new QueryProcessor().process(query));
       }
 
       page.writeTo(resp);
