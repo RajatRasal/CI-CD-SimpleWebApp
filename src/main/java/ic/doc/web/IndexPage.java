@@ -6,6 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class IndexPage implements Page {
 
+  /**
+   * Writes the home page of the site in HTML to a HttpServletResponse, ready to be
+   * served to the user.
+   *
+   * @param resp          The HttpServletResponse to be written to.
+   * @throws IOException  Possibly occurs due to file calls.
+   */
   public void writeTo(HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
     PrintWriter writer = resp.getWriter();

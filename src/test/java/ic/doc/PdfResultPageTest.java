@@ -1,6 +1,6 @@
 package ic.doc;
 
-import ic.doc.web.PDFResultPage;
+import ic.doc.web.PdfResultPage;
 import java.io.*;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.WriteListener;
@@ -11,10 +11,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class PDFResultPageTest {
+public class PdfResultPageTest {
   @Rule public JUnitRuleMockery context = new JUnitRuleMockery();
 
-  private final PDFResultPage resultPage = new PDFResultPage("query", "answer");
+  private final PdfResultPage resultPage = new PdfResultPage("query", "answer");
   private final HttpServletResponse respMock = context.mock(HttpServletResponse.class);
 
   private ServletOutputStream so;

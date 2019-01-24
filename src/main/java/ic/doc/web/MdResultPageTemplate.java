@@ -4,17 +4,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-abstract class MDResultPageTemplate implements Page {
+abstract class MdResultPageTemplate implements Page {
 
   private final String query;
   private final String answer;
 
-  protected MDResultPageTemplate(String query, String answer) {
+  protected MdResultPageTemplate(String query, String answer) {
     this.query = query;
     this.answer = answer;
   }
 
-  protected void writeMDTemplateToFile(File file) throws FileNotFoundException {
+  protected void writeMdTemplateToFile(File file) throws FileNotFoundException {
     PrintWriter writer = new PrintWriter(file);
 
     writer.write("# Your query result:\n\n");

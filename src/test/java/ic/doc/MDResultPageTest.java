@@ -3,7 +3,7 @@ package ic.doc;
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.CoreMatchers.containsString;
 
-import ic.doc.web.MDResultPage;
+import ic.doc.web.MdResultPage;
 import java.io.*;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.WriteListener;
@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class MDResultPageTest {
   @Rule public JUnitRuleMockery context = new JUnitRuleMockery();
-  private final MDResultPage resultPage = new MDResultPage("query", "answer");
+  private final MdResultPage resultPage = new MdResultPage("query", "answer");
   private final HttpServletResponse respMock = context.mock(HttpServletResponse.class);
 
   private ServletOutputStream so;
