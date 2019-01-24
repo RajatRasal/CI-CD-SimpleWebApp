@@ -32,24 +32,24 @@ public class WebServer {
   }
 
   static class Website extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-      String query = req.getParameter("query");
-      String format = req.getParameter("format");
-      Page page;
+     @Override
+     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String query = req.getParameter("query");
+        String format = req.getParameter("format");
+        Page page;
 
-      if (query == null) {
-        page = new IndexPage();
-      } else if (format == null) {
-        page = new HtmlResultPage(query, new QueryProcessor().process(query));
-      } else if (format.equals("pdf")) {
-        page = new PdfResultPage(query, new QueryProcessor().process(query));
-      } else {
-        page = new MdResultPage(query, new QueryProcessor().process(query));
-      }
+        if (query == null) {
+          page = new IndexPage();
+        } else if (format.equals("html")) {
+          page = new HTMLResultPage(query, new QueryProcessor().process(query));
+        } else if (format.equals("pdf")) {
+          page = new PDFResultPage(query, new QueryProcessor().process(query));
+        } else {
+          page = new MDResultPage(query, new QueryProcessor().process(query));
+        }
 
-      page.writeTo(resp);
-    }
+        page.writeTo(resp);
+     }
   }
 
   public static void main(String[] args) throws Exception {

@@ -37,7 +37,6 @@ public class PdfResultPage extends MdResultPageTemplate {
       throw new IOException();
     }
 
-    System.out.println("writing");
     Files.copy(pdfFile.toPath(), resp.getOutputStream());
 
     mdFile.delete();
