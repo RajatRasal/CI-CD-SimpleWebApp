@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexPage implements Page {
 
   /**
-   * Writes the home page of the site in HTML to a HttpServletResponse, ready to be
-   * served to the user.
+   * Writes the home page of the site in HTML to a HttpServletResponse, ready to be served to the
+   * user.
    *
-   * @param resp          The HttpServletResponse to be written to.
-   * @throws IOException  Possibly occurs due to file calls.
+   * @param resp The HttpServletResponse to be written to.
+   * @throws IOException Possibly occurs due to file calls.
    */
   public void writeTo(HttpServletResponse resp) throws IOException {
     resp.setContentType("text/html");
@@ -22,18 +22,19 @@ public class IndexPage implements Page {
     writer.println("<head><title>Welcome</title></head>");
     writer.println("<body>");
 
-        // Content
-        writer.println(
-                "<h1>Welcome!!</h1>" +
-                        "<p>Enter your query in the box below: " +
-                        "<form>" +
-                        "<input type=\"text\" name=\"query\" />" +
-                        "<br><br><input type=\"submit\">" +
-                        "<br><br><input type=\"radio\" name=\"format\" value=\"html\" checked> Download as html?" +
-                        "<br><br><input type=\"radio\" name=\"format\" value=\"md\"> Download as markdown?" +
-                        "<br><br><input type=\"radio\" name=\"format\" value=\"pdf\"> Download as pdf?" +
-                        "</form>" +
-                        "</p>");
+    // Content
+    writer.println(
+        "<h1>Welcome!!</h1>"
+            + "<p>Enter your query in the box below: "
+            + "<form>"
+            + "<input type=\"text\" name=\"query\" />"
+            + "<br><br><input type=\"submit\">"
+            + "<br><br><input type=\"radio\" name=\"format\" value=\"html\" checked> "
+            + "Download as html?"
+            + "<br><br><input type=\"radio\" name=\"format\" value=\"md\"> Download as markdown?"
+            + "<br><br><input type=\"radio\" name=\"format\" value=\"pdf\"> Download as pdf?"
+            + "</form>"
+            + "</p>");
 
     // Footer
     writer.println("</body>");

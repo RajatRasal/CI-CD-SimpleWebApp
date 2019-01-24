@@ -5,8 +5,8 @@ public class QueryProcessor {
   /**
    * Takes a query and returns the result of this query in the database of known information.
    *
-   * @param query   the query to be run against the database
-   * @return        result of query (or an empty string if no result is present)
+   * @param query the query to be run against the database
+   * @return result of query (or an empty string if no result is present)
    */
   public String process(String query) {
     StringBuilder results = new StringBuilder();
@@ -19,16 +19,18 @@ public class QueryProcessor {
     }
 
     if (query.toLowerCase().contains("asimov")) {
-      results.append("Isaac Asimov (2 January 1920 - 6 April 1992) was an\n" +
-          "American writer and professor of Biochemistry, famous for\n" +
-          "his works of hard science fiction and popular science. \n");
+      results.append(
+          "Isaac Asimov (2 January 1920 - 6 April 1992) was an\n"
+              + "American writer and professor of Biochemistry, famous for\n"
+              + "his works of hard science fiction and popular science. \n");
       results.append(System.lineSeparator());
     }
 
     if (query.toLowerCase().contains("socrates")) {
-      results.append("Socrates (470 – 399 BC) was a classical Greek (Athenian) philosopher \n" +
-          "credited as one of the founders of Western philosophy, and as being the first \n" +
-          "moral philosopher of the Western ethical tradition of thought.");
+      results.append(
+          "Socrates (470 – 399 BC) was a classical Greek (Athenian) philosopher \n"
+              + "credited as one of the founders of Western philosophy, and as being the first \n"
+              + "moral philosopher of the Western ethical tradition of thought.");
       results.append(System.lineSeparator());
     }
 

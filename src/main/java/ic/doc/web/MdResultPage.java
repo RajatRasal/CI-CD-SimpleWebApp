@@ -12,11 +12,11 @@ public class MdResultPage extends MdResultPageTemplate {
   }
 
   /**
-   * Writes the result of a query in markdown format to the HttpServletResponse,
-   * ready to be served to the user.
+   * Writes the result of a query in markdown format to the HttpServletResponse, ready to be served
+   * to the user.
    *
-   * @param resp          The HttpServletResponse to be written to.
-   * @throws IOException  Possibly occurs due to file calls.
+   * @param resp The HttpServletResponse to be written to.
+   * @throws IOException Possibly occurs due to file calls.
    */
   public void writeTo(HttpServletResponse resp) throws IOException {
     resp.setContentType("text/markdown");

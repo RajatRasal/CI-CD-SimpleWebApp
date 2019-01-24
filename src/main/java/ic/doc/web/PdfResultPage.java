@@ -12,11 +12,11 @@ public class PdfResultPage extends MdResultPageTemplate {
   }
 
   /**
-   * Write result of the query to a HttpServletResponse in pdf format, which will be
-   * served to the user.
+   * Write result of the query to a HttpServletResponse in pdf format, which will be served to the
+   * user.
    *
-   * @param resp          The HttpServletResponse to be written to.
-   * @throws IOException  Possibly occurs due to file calls.
+   * @param resp The HttpServletResponse to be written to.
+   * @throws IOException Possibly occurs due to file calls.
    */
   public void writeTo(HttpServletResponse resp) throws IOException {
     File mdFile = File.createTempFile("result", ".md");

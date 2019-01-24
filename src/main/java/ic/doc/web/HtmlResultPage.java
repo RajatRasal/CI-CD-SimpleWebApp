@@ -15,8 +15,8 @@ public class HtmlResultPage implements Page {
   }
 
   /**
-   * Writes a HTML formatted result page to the given HttpServletResponse
-   * writer. Uses the query and answer given on construction.
+   * Writes a HTML formatted result page to the given HttpServletResponse writer. Uses the query and
+   * answer given on construction.
    *
    * @param resp - the HttpServletResponse which will be served
    * @throws IOException - potentially caused by resp.getWriter();
