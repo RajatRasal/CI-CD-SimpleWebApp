@@ -1,6 +1,10 @@
 package ic.doc;
 
-import ic.doc.web.*;
+import ic.doc.web.HtmlResultPage;
+import ic.doc.web.IndexPage;
+import ic.doc.web.MdResultPage;
+import ic.doc.web.Page;
+import ic.doc.web.PdfResultPage;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
