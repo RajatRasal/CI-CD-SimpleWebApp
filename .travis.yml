@@ -1,6 +1,16 @@
 language: java
+jdk: oraclejdk9
+
+before_install:
+  - |
+    sudo apt-get install -y -q --allow-unauthenticated \
+      pandoc \
+      texlive-base \
+      texlive-latex-base \
+      texlive-fonts-recommended
 
 stages:
+  - lint
   - compile
   - test
   - name: deploy
@@ -8,6 +18,8 @@ stages:
 
 jobs:
   include:
+    - stage: lint
+      script: mvn checkstyle:check -Dcheckstyle.config.location=google_checks.xml -Dcheckstyle.violationSeverity=warning
     - stage: compile
       script: mvn compile
     - stage: test
