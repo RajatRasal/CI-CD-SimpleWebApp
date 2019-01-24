@@ -1,7 +1,7 @@
 package ic.doc;
 
 public class QueryProcessor {
-  
+
   /**
    * Takes a query and returns the result of this query in the database of known information.
    *

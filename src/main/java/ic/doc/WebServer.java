@@ -5,16 +5,22 @@ import ic.doc.web.IndexPage;
 import ic.doc.web.MDResultPage;
 import ic.doc.web.PDFResultPage;
 import ic.doc.web.Page;
-import java.io.IOException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import java.io.IOException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 public class WebServer {
 
+  /**
+   * Instantiates and starts the web server.
+   *
+   * @throws Exception if any calls to java servlet calls cause an exception
+   */
   public WebServer() throws Exception {
     Server server = new Server(Integer.valueOf(System.getenv("PORT")));
 
